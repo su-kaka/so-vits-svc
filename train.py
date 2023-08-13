@@ -259,6 +259,23 @@ def train_and_evaluate(rank, epoch, hps, nets, optims, schedulers, scaler, loade
                                       os.path.join(hps.model_dir, "G_{}.pth".format(global_step)))
                 utils.save_checkpoint(net_d, optim_d, hps.train.learning_rate, epoch,
                                       os.path.join(hps.model_dir, "D_{}.pth".format(global_step)))
+                import save_mods
+                import sys
+                import traceback
+                
+                try:
+                    save_mods.gg_save(logger, global_step, reference_loss)
+                except Exception as e:
+                    print(1 / 1)
+                    这个是输出错误的具体原因
+                    print(e)  输出：division by zero
+                    print(sys.exc_info())  输出：(<class 'ZeroDivisionError'>, ZeroDivisionError('division by zero'), <traceback object at 0x000001A1A7B03380>)
+                
+                    #以下两步都是输出错误的具体位置，报错行号位置在第几行
+                    print('\n', '>>>' * 20)
+                    print(traceback.print_exc())
+                    print('\n', '>>>' * 20)
+                    print(traceback.format_exc())
                 keep_ckpts = getattr(hps.train, 'keep_ckpts', 0)
                 if keep_ckpts > 0:
                     utils.clean_checkpoints(path_to_models=hps.model_dir, n_ckpts_to_keep=keep_ckpts, sort_by_time=True)
