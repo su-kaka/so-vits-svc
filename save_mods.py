@@ -17,7 +17,7 @@ def gg_save(logger, global_step, reference_loss):
     #本代码的目的，是保存损失率最小的10个模型，10个这个数量，可以在下面 len(files) < 10 这里改。
     #把这个save_mods.py，复制到根目录，然后复制最下面的备注，到train.py 的截图位置，然后取消备注
     #【这个path，是准备保存的目录，目录尾部一定要有/】
-    path = 'I:/so-vits-svc-mods/lkw/'
+    path = '/kggle/working/'
     print("现在时间 " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     #print("logs/44k/D_{}.pth".format(global_step))
     # 检查文件是否存在
@@ -26,7 +26,7 @@ def gg_save(logger, global_step, reference_loss):
         files = os.listdir(path)
         gg_file_name = str(reference_loss)[7:14] + "_" + str(global_step) + "_"
         #print(path + gg_file_name + "D.pth")
-        if len(files) < 10:
+        if len(files) < 5:
             #print('小于10')
             # 如果文件存在，将其复制到目标地址
             shutil.copy("logs/44k/D_{}.pth".format(global_step), path + gg_file_name + "D.pth")
