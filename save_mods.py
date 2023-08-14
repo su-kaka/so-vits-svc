@@ -17,7 +17,7 @@ def gg_save(logger, global_step, reference_loss):
     #本代码的目的，是保存损失率最小的10个模型，10个这个数量，可以在下面 len(files) < 10 这里改。
     #把这个save_mods.py，复制到根目录，然后复制最下面的备注，到train.py 的截图位置，然后取消备注
     #【这个path，是准备保存的目录，目录尾部一定要有/】
-    path = 'logs/44k/sovits_lossless'
+    path = 'logs/sovits_lossless'
     print("现在时间 " + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     #print("logs/44k/D_{}.pth".format(global_step))
     # 检查文件是否存在
